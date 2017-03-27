@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Relatorio de Processos</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+
+    <link rel="stylesheet" href="assets/plugins/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/plugins/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap.min.css">
+
+    <script type="text/javascript" charset="utf8" src="assets/plugins/jquery-1.12.4.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/plugins/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/plugins/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/plugins/vfs_fonts.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="assets/plugins/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="assets/plugins/vfs_fonts.js"></script>
+    <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="pages/css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link class="main-stylesheet" href="pages/css/pages.css" rel="stylesheet" type="text/css"/>
+<style>
+
+
+#contratos {
+  background-position: 10px 10px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+    
+
+.blue{
+  color:#4d79ff;
+}
+.red{
+  color:#ff4d4d;
+}
+    
+.hide_column{
+    display : none;
+}
+   
+table{
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+</style>
+</head>
+
+<body class="fixed-header  dashboard">
+
+    <nav class="page-sidebar" data-pages="sidebar">
+        <div class="sidebar-menu">
+            <ul class="menu-items">
+                <li class="m-t-30">
+                    <a href="contratos.html" class="detailed">
+                    <span class="title">Contratos</span>
+                    <span class="details"></span>
+                    </a>
+                    <span class="icon-thumbnail"><i class="pg-layouts"></i></span>
+                </li>
+                <li class="open">
+                    <a href="processos.html" class="detailed">
+                    <span class="title">Processos</span>
+                    <span class="details"></span>
+                    </a>
+                    <span class="icon-thumbnail bg-success"><i class="pg-layouts"></i></span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </nav>
+
+
+   <div class="page-container">
+        <div class="header ">
+            <img src="assets/img/header-fpf.jpg">
+        </div>
+
+        <div class="page-content-wrapper">
+            <div class="content sm-gutter">
+                 <div class="container-fluid padding-25 sm-padding-10">
+                    <div class="row">      
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <table id="processos" class="display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Noderef</th>
+                                            <th>Pasta</th>
+                                            <th>Titulo</th>
+                                            <th>Descricao</th>
+                                            <th>Processo</th>
+                                            <th>Classe</th>
+                                            <th>Assunto</th>
+                                            <th>Distribuicao</th>
+                                            <th>Controle</th>
+                                            <th>Juiz</th>
+                                            <th>Tribunal</th>
+                                            <th>Origem</th>
+                                            <th>Parte</th>
+                                            <th>Situacao</th>
+                                            <th>Valor</th>
+                                            <th>Prognostico</th>
+                                            <th>Procurador</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Noderef</th>
+                                            <th>Pasta</th>
+                                            <th>Titulo</th>
+                                            <th>Descricao</th>
+                                            <th>Processo</th>
+                                            <th>Classe</th>
+                                            <th>Assunto</th>
+                                            <th>Distribuicao</th>
+                                            <th>Controle</th>
+                                            <th>Juiz</th>
+                                            <th>Tribunal</th>
+                                            <th>Origem</th>
+                                            <th>Parte</th>
+                                            <th>Situacao</th>
+                                            <th>Valor</th>
+                                            <th>Prognostico</th>
+                                            <th>Procurador</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Noderef</td>
+                                            <td>Pasta</td>
+                                            <td>Titulo</td>
+                                            <td>Descricao</td>
+                                            <td>Processo</td>
+                                            <td>Classe</td>
+                                            <td>Assunto</td>
+                                            <td>Distribuicao</td>
+                                            <td>Controle</td>
+                                            <td>Juiz</td>
+                                            <td>Tribunal</td>
+                                            <td>Origem</td>
+                                            <td>Parte</td>
+                                            <td>Situacao</td>
+                                            <td>Valor</td>
+                                            <td>Prognostico</td>
+                                            <td>Procurador</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/plugins/modernizr.custom.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="pages/js/pages.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#processos').focus();
+
+        $('#processos').DataTable({
+
+            dom: 'Bfrtip',
+
+            fixedHeader: true,
+            "paging": true,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "ajax": 'http://fpf.ebravo.com.br/share/proxy/alfresco/fpfprocessos',
+            //"ajax": 'processos.txt',
+            "order": [[8, "desc"]],
+            "autoWidth": false,
+            "fixedHeader": {
+                "header": false,
+                "footer": false
+            },
+
+            columnDefs: [
+                    { "targets": [8], "type": 'date-uk' },
+                    //{ "visible": false, "targets": [0, 1, 3, 4] },
+                    {className: "hide_column", "targets": [0, 1, 3, 4, 9, 16, 17] },
+                    { "render": function (data, type, row) { return getURL(row[1], row[2]); }, "targets": 2 },
+                    //{ "render": function (data, type, row) { return getCheck(row[10]); }, "targets": 10 },
+                    //{ "render": function (data, type, row) { return getCheck(row[11]); }, "targets": 11 },
+                    {className: "dt-left", "targets": [2] },
+                    { className: "dt-center", "targets": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] },
+                    { "width": "7%", "targets": [2, 8, 14, 15] },
+                    { "width": "9%", "targets": [6, 7, 8, 9, 10, 11, 12, 13] },
+                    //{ "width": "5px", "targets": [5, 6, 7, 8, 10, 11, 12, 13, 14, 15] }
+                ],
+
+            "language": {
+                "sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ ate _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 ate 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por pagina",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado!!!",
+                "sSearch": "Pesquisar processos:",
+                "oPaginate": {
+                    "sNext": "Proximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Ultimo"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+
+            },
+
+            buttons: [
+                    'excel', {
+                        text: 'PDF',
+                        orientation: 'landscape',
+                        action: function (e, dt, node, config) {
+                            doPDF();
+                        }
+                    }
+                ]
+
+        });
+
+        // Setup - add a text input to each footer cell
+        $('#processos tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="' + title + '" />');
+        });
+
+        // DataTable
+        var table = $('#processos').DataTable();
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                            .search(this.value)
+                            .draw();
+                }
+            });
+        });
+
+    });
+
+
+    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+        "date-uk-pre": function (a) {
+            if (a == null || a == "") {
+                return 0;
+            }
+            var ukDatea = a.split('/');
+            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+        },
+
+        "date-uk-asc": function (a, b) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+
+        "date-uk-desc": function (a, b) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
+    });
+
+
+    function getCheck(ss) {
+
+        if ("Sim" == ss) {
+            return "<span class='glyphicon glyphicon-ok blue'></span>";
+        }
+        else {
+            return "<span class='glyphicon glyphicon-remove red'></span>";
+        }
+
+    }
+
+    function getURL(noderef, nome) {
+
+        return "<a href=\"http://fpf.ebravo.com.br/share/page/site/jurdico/folder-details?nodeRef=" + noderef + "\" target=\"_blank\">" + nome + "</a>";
+
+    }
+
+    function doPDF() {
+
+        // lista de processos para export
+        var processos = new Array();
+
+        // lista de processos da tela com filtro
+        var rows = $("#processos").dataTable().$('tr', { "filter": "applied" });
+
+        // tabela do relatorio
+        var body = [];
+
+        var trow = 0;
+
+        for (var i = 0; i < rows.length; i++) {
+
+            var varURL = 'http://fpf.ebravo.com.br/share/page/site/jurdico/folder-details?nodeRef='+$(rows[i]).find("td:eq(1)").text();
+            var varNomePasta = $(rows[i]).find("td:eq(2)").text();
+            var varProcesso = $(rows[i]).find("td:eq(5)").text();
+            var varClasse = $(rows[i]).find("td:eq(6)").text();
+            var varAssunto = $(rows[i]).find("td:eq(7)").text();
+            var varDataDistribuicao = $(rows[i]).find("td:eq(8)").text();
+            var varControle = $(rows[i]).find("td:eq(9)").text();
+            var varJuiz = $(rows[i]).find("td:eq(10)").text();
+            var varTribunal = $(rows[i]).find("td:eq(11)").text();
+            var varOrigem = $(rows[i]).find("td:eq(12)").text();
+            var varParte = $(rows[i]).find("td:eq(13)").text();
+            var varStatus = $(rows[i]).find("td:eq(14)").text();
+            var varValor = $(rows[i]).find("td:eq(15)").text();
+            var varPrognostico = $(rows[i]).find("td:eq(16)").text();
+            var varProcurador = $(rows[i]).find("td:eq(17)").text();
+
+            var varPageBreak = 'after';
+
+            if (trow == (rows.length - 1)) {
+                varPageBreak = '';
+            }
+
+            body[trow] = {
+                pageBreak: varPageBreak,
+                margin: [20, 20],
+                style: 'tableExample',
+                color: '#444',
+                table: {
+                    widths: [170, 170, 170, 190],
+                    headerRows: 2,
+                    body: [
+                        [{ text: varNomePasta + ' - ' + varParte, style: 'tableHeader', colSpan: 4, alignment: 'left' }, {}, {}, {}],
+                        [
+                            { text: 'Processo', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Distribuicao', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Situacao', style: 'tableHeader', alignment: 'center' },
+                            { text: 'Valor', style: 'tableHeader', alignment: 'center' }
+                        ],
+                        [
+                            { text: varProcesso, alignment: 'center' },
+                            { text: varDataDistribuicao, alignment: 'center' },
+                            { text: varStatus, alignment: 'center' },
+                            { text: varValor, alignment: 'center' }
+                        ],
+                        [
+                            { text: 'Classe', style: 'tableHeader', alignment: 'center' },
+                            { text: varClasse, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Assunto', style: 'tableHeader', alignment: 'center' },
+                            { text: varAssunto, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Juiz', style: 'tableHeader', alignment: 'center' },
+                            { text: varJuiz, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Tribunal', style: 'tableHeader', alignment: 'center' },
+                            { text: varTribunal, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Origem', style: 'tableHeader', alignment: 'center' },
+                            { text: varOrigem, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Controle', style: 'tableHeader', alignment: 'center' },
+                            { text: varControle, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Prognostico', style: 'tableHeader', alignment: 'center' },
+                            { text: varPrognostico, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Procurador', style: 'tableHeader', alignment: 'center' },
+                            { text: varProcurador, alignment: 'left', colSpan: 3 },
+                            {},
+                            {}
+                        ],
+                        [
+                            { text: 'Clique aqui para acessar a pasta do processo no GED', italics: true, link:varURL, alignment: 'center', colSpan: 4 },
+                            {},
+                            {},
+                            {}
+                        ]
+                    ]
+                }
+            };
+
+            trow += 1;
+
+        }
+
+        var docDefinition = {
+            pageOrientation: 'landscape',
+            pageSize: 'A4',
+            header: {
+                margin: [10, 18],
+                style: 'header',
+                columns: [
+                        {
+                            text: 'Relatorio de Processos',
+                            alignment: 'center'
+                        }
+                    ]
+            },
+
+            footer: function (page, pages) {
+                return {
+                    columns: [
+                        { text: 'GED eBravo', alignment: 'left' },
+                        { text: 'Federacao Paulista de Futebol', alignment: 'center' },
+                        {
+                            alignment: 'right',
+                            text: [
+                                'Pag. ',
+                                { text: page.toString(), italics: false },
+                                ' de ',
+                                { text: pages.toString(), italics: false }
+                            ]
+                        }
+                    ],
+                    margin: [40, 0]
+                };
+            },
+            content: [
+                body
+            ],
+            styles: {
+                header: {
+                    fontSize: 18,
+                    bold: true,
+                    margin: [0, 0, 0, 10]
+                },
+                subheader: {
+                    fontSize: 16,
+                    bold: true,
+                    margin: [0, 10, 0, 5]
+                },
+                tableExample: {
+                    margin: [0, 5, 0, 15]
+                },
+                tableHeader: {
+                    bold: true,
+                    fontSize: 13,
+                    color: 'black'
+                }
+            },
+            defaultStyle: {
+                // alignment: 'justify'
+            }
+
+        };
+
+        // open the PDF in a new window
+        pdfMake.createPdf(docDefinition).open();
+
+        // print the PDF
+        // pdfMake.createPdf(docDefinition).print();
+
+        // download the PDF
+        //pdfMake.createPdf(docDefinition).download();
+    }
+
+
+    function buildTableBody(data, columns) {
+        var body = [];
+
+        body.push(columns);
+
+        data.forEach(function (row) {
+            var dataRow = [];
+
+            columns.forEach(function (column) {
+                dataRow.push(row[column].toString());
+            })
+
+            body.push(dataRow);
+        });
+
+        return body;
+    }
+
+
+    function table(data, columns) {
+        return {
+            table: {
+                headerRows: 1,
+                body: buildTableBody(data, columns)
+            }
+        };
+    }
+
+</script>
+
+</body>
+</html>
