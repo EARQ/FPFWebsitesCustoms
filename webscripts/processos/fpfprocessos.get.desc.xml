@@ -1,0 +1,10 @@
+<webscript>
+	<shortname>Relatorio de Processos</shortname>
+	<description>Relatorio de Processos da FPF</description>
+	<url>/fpfprocessos</url>
+ 	<url>/fpfprocessos.json</url>
+    	<format default="json">extension</format>
+    	<authentication>user</authentication>
+    	<family>EARQ Extras</family>
+    	<transaction>none</transaction>
+</webscript>

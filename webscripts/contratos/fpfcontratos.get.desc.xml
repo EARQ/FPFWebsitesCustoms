@@ -1,0 +1,10 @@
+<webscript>
+	<shortname>Relatorio de Contratos</shortname>
+	<description>Relatorio de Contratos da FPF</description>
+	<url>/fpfcontratos</url>
+ 	<url>/fpfcontratos.json</url>
+    	<format default="json">extension</format>
+    	<authentication>user</authentication>
+    	<family>EARQ Extras</family>
+    	<transaction>none</transaction>
+</webscript>
